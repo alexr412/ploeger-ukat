@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rechtsgebiete - Kanzlei Plöger & Ukat</title>
     <meta name="description" content="Übersicht unserer juristischen Schwerpunkte und Rechtsgebiete.">
+    <link rel="icon" href="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,6 +17,8 @@
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root { --anchor-offset: clamp(2.25rem, 4vh, 2.75rem); }
+        html { scroll-padding-top: var(--anchor-offset); }
         body { font-family: 'Inter', sans-serif; background-color: #FDFBF7; color: #292524; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         ::-webkit-scrollbar { width: 10px; }
@@ -38,18 +41,26 @@
             transition: width 0.3s ease-out;
         }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .fluid-section { padding-top: clamp(3.25rem, 6vw, 5rem); padding-bottom: clamp(3.25rem, 6vw, 5rem); }
+        .fluid-heading-space { margin-bottom: clamp(2.25rem, 4vw, 3.75rem); }
+        .subpage-hero { min-height: clamp(36rem, 82svh, 54rem); padding-top: clamp(8rem, 17vh, 12rem); padding-bottom: clamp(4.5rem, 10vh, 8rem); }
+        :focus-visible { outline: 3px solid rgba(0, 64, 82, 0.35); outline-offset: 4px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body class="selection:bg-primary/20 selection:text-primary pt-32">
+<body class="selection:bg-primary/20 selection:text-primary">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 px-4 pt-6 transition-all duration-300">
-        <div class="max-w-7xl mx-auto rounded-full bg-white/90 backdrop-blur-xl shadow-lg py-3 px-8 transition-all duration-500">
+        <div id="navbar-inner" class="max-w-7xl mx-auto rounded-full bg-transparent py-4 px-2 transition-all duration-500">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                    <img src="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" alt="Logo" class="h-10 w-auto object-contain">
+                    <img src="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" alt="Plöger & Ukat Rechtsanwälte" class="h-10 w-auto object-contain">
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center space-x-8">
                     <a href="index.html#team" class="text-sm font-semibold text-stone-600 hover:text-primary nav-link transition-colors">Team</a>
                     <a href="rechtsgebiete.html" class="text-sm font-semibold text-primary nav-link active transition-colors">Rechtsgebiete</a>
                     <a href="notar.html" class="text-sm font-semibold text-stone-600 hover:text-primary nav-link transition-colors">Notar</a>
@@ -59,8 +70,9 @@
                         <span class="text-[10px] font-bold uppercase tracking-wider text-red-600">24h Notfallnummer</span>
                         <a href="tel:017621513726" class="text-sm font-bold text-stone-900 hover:text-primary transition-colors">0176 21 51 37 26</a>
                     </div>
+                    <a href="index.html#kontakt" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-primary-dark hover:scale-105 transition-all shadow-xl shadow-stone-200">Termin vereinbaren</a>
                 </div>
-                <button onclick="toggleMenu()" class="md:hidden p-2 text-stone-800 bg-white rounded-full shadow-sm">
+                <button id="menu-button" type="button" onclick="toggleMenu()" class="lg:hidden p-2 text-stone-800 bg-white rounded-full shadow-sm" aria-label="Navigation öffnen" aria-controls="mobile-menu" aria-expanded="false">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -74,54 +86,90 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-red-600 mb-1">24h Notfallnummer</span>
                 <a href="tel:017621513726" class="text-lg font-bold text-stone-900">0176 21 51 37 26</a>
             </div>
+            <a href="index.html#kontakt" class="mt-2 bg-primary text-white text-center px-6 py-3 rounded-xl font-bold">Termin vereinbaren</a>
         </div>
     </nav>
 
-    <section class="py-24 px-4 bg-white/50 min-h-screen">
+    <section class="subpage-hero site-viewport-hero relative flex items-center px-4 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://ploeger-ukat.de/fileadmin/user_upload/notariat-compressor_v2.jpg" alt="Juristische Fachliteratur in der Kanzlei" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-white/[0.42]"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/65 to-white/5"></div>
+        </div>
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <div class="site-hero-grid">
+              <div class="site-hero-content">
+                <span class="text-primary font-bold tracking-widest uppercase text-xs mb-5 block">Rechtsanwälte in Bremerhaven</span>
+                <h1 class="site-hero-title font-serif text-stone-900">Wir machen nicht alles.<br>Aber das hier richtig.</h1>
+                <p class="site-hero-copy text-stone-700 mt-6">Klare Spezialisierung, fundierte Erfahrung und eine Beratung, bei der Sie jederzeit verstehen, wie es weitergeht.</p>
+                <a href="#rechtsgebiete" class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-colors">Rechtsgebiete ansehen <i data-lucide="arrow-down" class="w-4 h-4"></i></a>
+              </div>
+              <aside class="site-hero-aside" aria-label="Ablauf der anwaltlichen Beratung">
+                <span class="text-amber-300 text-xs font-bold uppercase tracking-[0.18em]">Klarer Kurs</span>
+                <h2 class="text-3xl font-serif mt-3">Vom Anliegen zur passenden Strategie.</h2>
+                <div class="site-hero-step">
+                    <span class="text-amber-300 font-bold">01</span>
+                    <div><strong class="block mb-1">Einordnen</strong><p class="text-sm text-white/70 leading-relaxed">Sachlage, Unterlagen und das eigentliche Ziel gemeinsam klären.</p></div>
+                </div>
+                <div class="site-hero-step">
+                    <span class="text-amber-300 font-bold">02</span>
+                    <div><strong class="block mb-1">Entscheiden</strong><p class="text-sm text-white/70 leading-relaxed">Chancen, Risiken und sinnvolle nächste Schritte verständlich abwägen.</p></div>
+                </div>
+                <div class="site-hero-step">
+                    <span class="text-amber-300 font-bold">03</span>
+                    <div><strong class="block mb-1">Vertreten</strong><p class="text-sm text-white/70 leading-relaxed">Die vereinbarte Linie konsequent verfolgen und klar kommunizieren.</p></div>
+                </div>
+              </aside>
+            </div>
+        </div>
+    </section>
+
+    <section id="rechtsgebiete" class="anchor-section site-content-section bg-white/70 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-20">
+            <div class="site-section-heading text-center max-w-2xl mx-auto">
                 <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Fokus</span>
-                <h1 class="text-4xl font-serif text-stone-900 mb-6">Wir machen nicht alles.<br/>Aber das hier richtig.</h1>
+                <h2 class="text-4xl font-serif text-stone-900 mb-5">Unsere Rechtsgebiete</h2>
+                <p class="text-stone-500 leading-relaxed">Für jedes Anliegen übernehmen wir nur das, was wir fachlich sicher und konsequent vertreten können.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform"><i data-lucide="briefcase"></i></div>
+            <div class="site-card-grid">
+                <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform"><i data-lucide="briefcase"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Arbeitsrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Kündigung, Aufhebungsvertrag oder Abmahnung greifen unmittelbar in Ihre berufliche Existenz ein. Wir prüfen Ihre Optionen.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mb-6 text-amber-600 group-hover:scale-110 transition-transform"><i data-lucide="home"></i></div>
+                <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform"><i data-lucide="home"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Mietrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Wir beraten Mieter und Vermieter im privaten und gewerblichen Mietrecht – von Kündigungen bis zu Räumungsklagen.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mb-6 text-rose-500 group-hover:scale-110 transition-transform"><i data-lucide="car"></i></div>
+                <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform"><i data-lucide="car"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Verkehrsrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Nach einem Unfall oder Bußgeldbescheid setzen wir Ihre Ansprüche durch und verteidigen Sie bei drohendem Führerscheinentzug.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-stone-200 rounded-2xl flex items-center justify-center mb-6 text-stone-600 group-hover:scale-110 transition-transform"><i data-lucide="hammer"></i></div>
+                 <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-stone-200 rounded-2xl flex items-center justify-center text-stone-600 group-hover:scale-110 transition-transform"><i data-lucide="hammer"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Baurecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Bauvorhaben sind finanziell sensibel. Wir begleiten Bauherren und Unternehmen von der Vertragsgestaltung bis zur Konfliktlösung.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 text-indigo-600 group-hover:scale-110 transition-transform"><i data-lucide="shield"></i></div>
+                 <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform"><i data-lucide="shield"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Strafrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Strafverfahren bedeuten massiven Eingriff. Wir übernehmen Ihre Verteidigung mit strategischer Klarheit.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform"><i data-lucide="building"></i></div>
+                 <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform"><i data-lucide="building"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">WEG-Recht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Wir beraten Wohnungseigentümer und Gemeinschaften bei Beschlussanfechtungen, Streitigkeiten und Verwaltungsfragen.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mb-6 text-rose-500 group-hover:scale-110 transition-transform"><i data-lucide="heart"></i></div>
+                 <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform"><i data-lucide="heart"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Familienrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Bei Trennung und Scheidung vertreten wir Ihre Interessen bei Unterhalt, Sorgerecht und Vermögen mit nüchterner Sachlichkeit.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform"><i data-lucide="scale"></i></div>
+                 <div class="site-responsive-card bg-white shadow-sm hover:shadow-xl transition-all border border-stone-100/50 flex flex-col h-full group">
+                    <div class="site-card-icon bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform"><i data-lucide="scale"></i></div>
                     <h3 class="text-xl font-bold text-stone-900 mb-4">Zivilrecht</h3>
                     <p class="text-stone-500 text-sm leading-relaxed">Wir setzen Ansprüche im Kauf-, Dienst- und Werkvertragsrecht effizient durch und wehren unberechtigte Forderungen ab.</p>
                 </div>
@@ -132,18 +180,34 @@
     <footer class="max-w-6xl mx-auto pb-12 text-center flex flex-col md:flex-row justify-between items-center text-stone-400 text-sm font-medium px-4">
          <div class="mb-4 md:mb-0">© <span id="current-year"></span> Plöger & Ukat.</div>
          <div class="flex gap-6">
-             <a href="#" class="hover:text-stone-800">Impressum</a>
-             <a href="#" class="hover:text-stone-800">Datenschutz</a>
-             <a href="#" class="hover:text-stone-800">Downloads</a>
+             <a href="https://ploeger-ukat.de/impressum/" class="hover:text-stone-800">Impressum</a>
+             <a href="https://ploeger-ukat.de/datenschutz/" class="hover:text-stone-800">Datenschutz</a>
+             <a href="https://ploeger-ukat.de/download/" class="hover:text-stone-800">Downloads</a>
          </div>
     </footer>
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
         lucide.createIcons();
+        const navbarInner = document.getElementById('navbar-inner');
+        function updateNavbar() {
+            if (window.scrollY > 20) {
+                navbarInner.classList.add('bg-white/90', 'backdrop-blur-xl', 'shadow-lg', 'py-3', 'px-8');
+                navbarInner.classList.remove('bg-transparent', 'py-4', 'px-2');
+            } else {
+                navbarInner.classList.add('bg-transparent', 'py-4', 'px-2');
+                navbarInner.classList.remove('bg-white/90', 'backdrop-blur-xl', 'shadow-lg', 'py-3', 'px-8');
+            }
+        }
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+        updateNavbar();
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('menu-button');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
+            const isOpen = !menu.classList.contains('hidden');
+            button.setAttribute('aria-expanded', String(isOpen));
+            button.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
         }
     </script>
 </body>

@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notar - Kanzlei Plöger & Ukat</title>
     <meta name="description" content="Unsere Notarleistungen. Beurkundungen, Testamente und Immobilienkaufverträge.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
-                extend: { colors: { primary: '#004052', 'primary-dark': '#002f3d' }, fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] } }
+                extend: { colors: { primary: '#004052', 'primary-dark': '#002f3d' }, fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] } }
             }
         }
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root { --anchor-offset: clamp(6.75rem, 14vh, 8rem); }
+        html { scroll-padding-top: var(--anchor-offset); }
         body { font-family: 'Inter', sans-serif; background-color: #FDFBF7; color: #292524; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Lora', serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 5px; }
@@ -38,18 +41,70 @@
             transition: width 0.3s ease-out;
         }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .fluid-section { padding-top: clamp(3.25rem, 6vw, 5rem); padding-bottom: clamp(3.25rem, 6vw, 5rem); }
+        .fluid-heading-space { margin-bottom: clamp(2.25rem, 4vw, 3.75rem); }
+        .subpage-hero { min-height: 100svh; padding-top: clamp(7.5rem, 15vh, 10rem); padding-bottom: clamp(4.5rem, 9vh, 7rem); }
+        .notar-hero-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.72fr); align-items: center; gap: clamp(3rem, 7vw, 7rem); }
+        .notar-hero-content { max-width: 45rem; }
+        .notar-hero-title { font-size: clamp(3rem, 4.3vw, 4.9rem); line-height: 1.02; text-wrap: balance; }
+        .notar-hero-copy { max-width: 42rem; font-size: clamp(1rem, 1.35vw, 1.35rem); line-height: 1.55; }
+        .notar-hero-aside { padding: clamp(1.75rem, 3vw, 2.5rem); border-radius: clamp(1.75rem, 3vw, 2.5rem); background: rgba(0, 64, 82, 0.92); color: white; box-shadow: 0 1.5rem 4rem rgba(0, 47, 61, 0.2); backdrop-filter: blur(14px); }
+        .notar-hero-step { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.13); }
+        .notar-hero-step:first-of-type { margin-top: 1.5rem; }
+        .notar-section { padding-top: clamp(1.75rem, 4vh, 3.25rem); padding-bottom: clamp(2.5rem, 5vh, 4rem); }
+        .notar-panel { padding: clamp(1.75rem, 4.5vh, 3.5rem); }
+        .notar-intro { gap: clamp(1.5rem, 3vw, 2.75rem); margin-bottom: clamp(1.75rem, 3.5vh, 3rem); padding-bottom: clamp(1.5rem, 3.5vh, 2.75rem); }
+        .notar-title { font-size: clamp(2.35rem, 4.8vh, 3.25rem); line-height: 1.08; }
+        .notar-intro-copy { font-size: clamp(0.95rem, 1.9vh, 1.1rem); line-height: 1.65; }
+        .notar-grid { gap: clamp(1.25rem, 2.7vh, 1.75rem); }
+        .notar-card { min-height: clamp(14.5rem, 27vh, 17rem); padding: clamp(1.4rem, 3.5vh, 2rem); border-radius: clamp(1.5rem, 3.5vh, 2.25rem); }
+        .notar-card-icon { width: clamp(2.75rem, 5.5vh, 3.25rem); height: clamp(2.75rem, 5.5vh, 3.25rem); margin-bottom: clamp(1rem, 2.2vh, 1.4rem); }
+        .notar-card h3 { font-size: clamp(1.15rem, 2.5vh, 1.35rem); margin-bottom: clamp(0.6rem, 1.25vh, 0.9rem); }
+        .notar-card p { font-size: clamp(0.85rem, 1.72vh, 0.95rem); line-height: 1.6; }
+        .notar-service-button { width: 100%; color: inherit; text-align: left; display: flex; flex-direction: column; cursor: pointer; transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+        .notar-service-button:hover { transform: translateY(-4px); border-color: rgba(251, 191, 36, 0.42); box-shadow: 0 1rem 2.5rem rgba(0, 47, 61, 0.22); }
+        .notar-more { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: auto; padding-top: 1.25rem; color: #fcd34d; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+        .notar-dialog { width: min(60rem, calc(100vw - 2rem)); max-height: calc(100svh - 2rem); padding: 0; border: 0; border-radius: 2rem; background: transparent; color: #292524; overflow: visible; }
+        .notar-dialog::backdrop { background: rgba(12, 23, 28, 0.72); backdrop-filter: blur(7px); }
+        .notar-dialog[open] { animation: dialogIn 220ms ease-out; }
+        @keyframes dialogIn { from { opacity: 0; transform: translateY(1rem) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .notar-dialog-card { max-height: calc(100svh - 2rem); overflow-y: auto; border-radius: 2rem; background: #fffdfa; box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+        .notar-dialog-header { position: relative; padding: clamp(1.5rem, 3vw, 2.5rem); padding-right: 5rem; background: linear-gradient(135deg, #004052, #002f3d); color: white; }
+        .notar-dialog-close { position: absolute; top: 1.25rem; right: 1.25rem; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 999px; background: rgba(255,255,255,0.12); transition: background-color 180ms ease, transform 180ms ease; }
+        .notar-dialog-close:hover { background: rgba(255,255,255,0.22); transform: rotate(4deg); }
+        .notar-dialog-body { padding: clamp(1.5rem, 3vw, 2.5rem); }
+        .notar-dialog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); margin-top: 1.5rem; }
+        .notar-dialog-list { display: grid; gap: 0.8rem; margin-top: 1rem; }
+        .notar-dialog-list li { display: grid; grid-template-columns: 1.25rem 1fr; gap: 0.7rem; align-items: start; color: #57534e; line-height: 1.55; }
+        .notar-dialog-list li::before { content: '✓'; color: #004052; font-weight: 700; }
+        .notar-dialog-footer { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; }
+        @media (max-width: 1023px) {
+            .notar-hero-layout { display: block; }
+            .notar-hero-aside { display: none; }
+        }
+        @media (max-width: 640px) {
+            .notar-dialog { width: calc(100vw - 1rem); max-height: calc(100svh - 1rem); border-radius: 1.5rem; }
+            .notar-dialog-card { max-height: calc(100svh - 1rem); border-radius: 1.5rem; }
+            .notar-dialog-grid { grid-template-columns: 1fr; }
+            .notar-dialog-footer { align-items: flex-start; flex-direction: column; }
+        }
+        :focus-visible { outline: 3px solid rgba(0, 64, 82, 0.35); outline-offset: 4px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body class="selection:bg-primary/20 selection:text-primary pt-32">
+<body class="selection:bg-primary/20 selection:text-primary">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 px-4 pt-6 transition-all duration-300">
-        <div class="max-w-7xl mx-auto rounded-full bg-white/90 backdrop-blur-xl shadow-lg py-3 px-8 transition-all duration-500">
+        <div id="navbar-inner" class="max-w-7xl mx-auto rounded-full bg-transparent py-4 px-2 transition-all duration-500">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                    <img src="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" alt="Logo" class="h-10 w-auto object-contain">
+                    <img src="https://ploeger-ukat.de/fileadmin/bilder-layout/logo.svg" alt="Plöger & Ukat Rechtsanwälte" class="h-10 w-auto object-contain">
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center space-x-8">
                     <a href="index.html#team" class="text-sm font-semibold text-stone-600 hover:text-primary nav-link transition-colors">Team</a>
                     <a href="rechtsgebiete.html" class="text-sm font-semibold text-stone-600 hover:text-primary nav-link transition-colors">Rechtsgebiete</a>
                     <a href="notar.html" class="text-sm font-semibold text-primary nav-link active transition-colors">Notar</a>
@@ -62,7 +117,7 @@
                     
                     <a href="index.html#kontakt" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-primary-dark hover:scale-105 transition-all shadow-xl shadow-stone-200">Termin vereinbaren</a>
                 </div>
-                <button onclick="toggleMenu()" class="md:hidden p-2 text-stone-800 bg-white rounded-full shadow-sm">
+                <button id="menu-button" type="button" onclick="toggleMenu()" class="lg:hidden p-2 text-stone-800 bg-white rounded-full shadow-sm" aria-label="Navigation öffnen" aria-controls="mobile-menu" aria-expanded="false">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -76,60 +131,100 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-red-600 mb-1">24h Notfallnummer</span>
                 <a href="tel:017621513726" class="text-lg font-bold text-stone-900">0176 21 51 37 26</a>
             </div>
+            <a href="index.html#kontakt" class="mt-2 bg-primary text-white text-center px-6 py-3 rounded-xl font-bold">Termin vereinbaren</a>
         </div>
     </nav>
 
+    <section class="subpage-hero site-viewport-hero relative flex items-center px-4 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://ploeger-ukat.de/fileadmin/bilder/kopfbilder/notariat-compressor_v2.jpg" alt="Notarielle Fachliteratur" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-white/[0.42]"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/65 to-white/5"></div>
+        </div>
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <div class="notar-hero-layout site-hero-grid">
+              <div class="notar-hero-content site-hero-content">
+                <span class="text-primary font-bold tracking-widest uppercase text-xs mb-5 block">Notariat in Bremerhaven</span>
+                <h1 class="notar-hero-title site-hero-title font-serif text-stone-900">Wichtige Entscheidungen.<br>Sicher gestaltet.</h1>
+                <p class="notar-hero-copy site-hero-copy text-stone-700 mt-6">Unparteiisch, vorausschauend und verständlich begleiten wir Sie bei Rechtsgeschäften, die dauerhaft Bestand haben sollen.</p>
+                <a href="#notarleistungen" class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-colors">Notarleistungen ansehen <i data-lucide="arrow-down" class="w-4 h-4"></i></a>
+              </div>
+              <aside class="notar-hero-aside site-hero-aside" aria-label="Ablauf einer notariellen Begleitung">
+                <span class="text-amber-300 text-xs font-bold uppercase tracking-[0.18em]">Persönlich begleitet</span>
+                <h2 class="text-3xl font-serif mt-3">Vom Anliegen bis zum Vollzug.</h2>
+                <div class="notar-hero-step site-hero-step">
+                    <span class="text-amber-300 font-bold">01</span>
+                    <div><strong class="block mb-1">Vorbereiten</strong><p class="text-sm text-white/70 leading-relaxed">Anliegen, Unterlagen und Gestaltungsmöglichkeiten verständlich klären.</p></div>
+                </div>
+                <div class="notar-hero-step site-hero-step">
+                    <span class="text-amber-300 font-bold">02</span>
+                    <div><strong class="block mb-1">Beurkunden</strong><p class="text-sm text-white/70 leading-relaxed">Inhalte gemeinsam durchgehen und verbindlich festhalten.</p></div>
+                </div>
+                <div class="notar-hero-step site-hero-step">
+                    <span class="text-amber-300 font-bold">03</span>
+                    <div><strong class="block mb-1">Abwickeln</strong><p class="text-sm text-white/70 leading-relaxed">Weitere Schritte und den Vollzug strukturiert begleiten.</p></div>
+                </div>
+              </aside>
+            </div>
+        </div>
+    </section>
+
     <!-- Notar Content -->
-    <section class="py-24 px-4 min-h-screen">
+    <section id="notarleistungen" class="anchor-section notar-section px-4 bg-[#FDFBF7] relative z-10">
         <div class="max-w-6xl mx-auto">
-            <div class="bg-primary rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl">
+            <div class="notar-panel bg-primary rounded-[2rem] md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
                 <!-- Dekorative Hintergründe -->
                 <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
                 <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-dark rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
                 
                 <div class="relative z-10">
-                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-white/10 pb-8">
+                    <div class="notar-intro flex flex-col md:flex-row md:items-end justify-between border-b border-white/10">
                         <div>
                             <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1 mb-6 backdrop-blur-sm border border-white/10">
                                 <i data-lucide="file-signature" class="w-4 h-4 text-amber-400"></i>
                                 <span class="text-xs font-bold uppercase tracking-wider">Amtlich & Sicher</span>
                             </div>
-                            <h1 class="text-4xl md:text-5xl font-serif">Unsere Notarleistungen</h1>
+                            <h2 class="notar-title font-serif">Unsere Notarleistungen</h2>
                         </div>
-                        <p class="text-stone-300 text-lg leading-relaxed max-w-md">
+                        <p class="notar-intro-copy text-stone-300 max-w-md">
                             Ob Immobilienkauf, Unternehmensgründung oder Vorsorgevollmacht – wir beurkunden Ihre wichtigsten Entscheidungen. Präzise und verlässlich.
                         </p>
                     </div>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="home"></i></div>
+                    <div class="notar-grid grid md:grid-cols-2 lg:grid-cols-3">
+                        <button type="button" class="notar-card notar-service-button bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 group" onclick="openNotarModal('immobilienkauf', this)" aria-haspopup="dialog" aria-label="Mehr über Immobilienkauf erfahren">
+                            <div class="notar-card-icon bg-white/10 rounded-xl flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="home"></i></div>
                             <h3 class="text-xl font-bold mb-3 text-white">Immobilienkauf</h3>
                             <p class="text-stone-300 text-sm leading-relaxed">Kauf- und Übertragungsverträge für Eigentumswohnungen, Einfamilienhäuser und komplexe Renditeobjekte rechtssicher und effizient.</p>
-                        </div>
-                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="heart"></i></div>
+                            <span class="notar-more">Mehr erfahren <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                        </button>
+                        <button type="button" class="notar-card notar-service-button bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 group" onclick="openNotarModal('ehe-familie', this)" aria-haspopup="dialog" aria-label="Mehr über Ehe und Familie erfahren">
+                            <div class="notar-card-icon bg-white/10 rounded-xl flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="heart"></i></div>
                             <h3 class="text-xl font-bold mb-3 text-white">Ehe & Familie</h3>
                             <p class="text-stone-300 text-sm leading-relaxed">Wir beraten Sie bei Ehe- und Partnerschaftsverträgen sowie familienrechtlichen Vereinbarungen für klare Verhältnisse.</p>
-                        </div>
-                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="building"></i></div>
+                            <span class="notar-more">Mehr erfahren <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                        </button>
+                         <button type="button" class="notar-card notar-service-button bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 group" onclick="openNotarModal('unternehmen', this)" aria-haspopup="dialog" aria-label="Mehr über notarielle Leistungen für Unternehmen erfahren">
+                            <div class="notar-card-icon bg-white/10 rounded-xl flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="building"></i></div>
                             <h3 class="text-xl font-bold mb-3 text-white">Unternehmen</h3>
                             <p class="text-stone-300 text-sm leading-relaxed">Wir begleiten Gründung, Umstrukturierung und laufende Maßnahmen mit rechtlicher Klarheit.</p>
-                        </div>
-                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="shield"></i></div>
+                            <span class="notar-more">Mehr erfahren <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                        </button>
+                         <button type="button" class="notar-card notar-service-button bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 group" onclick="openNotarModal('vorsorge', this)" aria-haspopup="dialog" aria-label="Mehr über Vorsorge und Vollmacht erfahren">
+                            <div class="notar-card-icon bg-white/10 rounded-xl flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="shield"></i></div>
                             <h3 class="text-xl font-bold mb-3 text-white">Vorsorge & Vollmacht</h3>
                             <p class="text-stone-300 text-sm leading-relaxed">Mit individuell gestalteten Vorsorgevollmachten und Patientenverfügungen stellen Sie sicher, dass im Ernstfall alles geregelt ist.</p>
-                        </div>
-                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="scroll"></i></div>
+                            <span class="notar-more">Mehr erfahren <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                        </button>
+                         <button type="button" class="notar-card notar-service-button bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 group" onclick="openNotarModal('testament-schenkung', this)" aria-haspopup="dialog" aria-label="Mehr über Testament und Schenkung erfahren">
+                            <div class="notar-card-icon bg-white/10 rounded-xl flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform"><i data-lucide="scroll"></i></div>
                             <h3 class="text-xl font-bold mb-3 text-white">Testament & Schenkung</h3>
                             <p class="text-stone-300 text-sm leading-relaxed">Durch vorausschauende Nachfolgeplanung regeln Sie Vermögensübertragungen konfliktvermeidend.</p>
-                        </div>
+                            <span class="notar-more">Mehr erfahren <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                        </button>
                         
                         <!-- Call to Action Box -->
-                        <a href="index.html#kontakt" class="bg-amber-400 text-primary p-8 rounded-[2rem] flex flex-col justify-center items-start hover:bg-amber-300 transition-colors cursor-pointer group">
+                        <a href="index.html#kontakt" class="notar-card bg-amber-400 text-primary flex flex-col justify-center items-start hover:bg-amber-300 transition-colors cursor-pointer group">
                             <h3 class="text-2xl font-bold mb-2">Termin vereinbaren</h3>
                             <p class="text-primary/80 text-sm mb-6 font-medium">Lassen Sie uns über Ihr Anliegen sprechen. Wir finden zeitnah einen Termin.</p>
                             <div class="bg-primary text-white p-3 rounded-full mt-auto group-hover:translate-x-2 transition-transform"><i data-lucide="arrow-right"></i></div>
@@ -140,13 +235,44 @@
         </div>
     </section>
 
+    <dialog id="notar-modal" class="notar-dialog" aria-labelledby="notar-modal-title" aria-describedby="notar-modal-intro">
+        <article class="notar-dialog-card">
+            <header class="notar-dialog-header">
+                <span id="notar-modal-eyebrow" class="text-amber-300 text-xs font-bold uppercase tracking-[0.18em]">Notarleistung</span>
+                <h2 id="notar-modal-title" class="text-3xl md:text-5xl font-serif mt-3"></h2>
+                <button type="button" class="notar-dialog-close" onclick="closeNotarModal()" aria-label="Fenster schließen">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </header>
+            <div class="notar-dialog-body">
+                <p id="notar-modal-intro" class="text-stone-600 text-base md:text-lg leading-relaxed max-w-3xl"></p>
+                <div class="notar-dialog-grid">
+                    <section>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest">Im Überblick</span>
+                        <h3 class="text-2xl mt-2">Typische Themen</h3>
+                        <ul id="notar-modal-topics" class="notar-dialog-list"></ul>
+                    </section>
+                    <section>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest">Gut vorbereitet</span>
+                        <h3 class="text-2xl mt-2">Für das Erstgespräch hilfreich</h3>
+                        <ul id="notar-modal-preparation" class="notar-dialog-list"></ul>
+                    </section>
+                </div>
+                <div class="notar-dialog-footer">
+                    <p class="text-xs text-stone-500 max-w-md leading-relaxed">Welche Unterlagen im Einzelfall benötigt werden, klären wir mit Ihnen persönlich. Die Übersicht ersetzt keine individuelle Beratung.</p>
+                    <a href="index.html#kontakt" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-colors">Termin vereinbaren <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </article>
+    </dialog>
+
     <!-- Footer -->
     <footer class="max-w-6xl mx-auto pb-12 text-center flex flex-col md:flex-row justify-between items-center text-stone-400 text-sm font-medium px-4">
          <div class="mb-4 md:mb-0">© <span id="current-year"></span> Plöger & Ukat. Mit Herz & Verstand.</div>
          <div class="flex gap-6">
-             <a href="#" class="hover:text-stone-800 transition-colors">Impressum</a>
-             <a href="#" class="hover:text-stone-800 transition-colors">Datenschutz</a>
-             <a href="#" class="hover:text-stone-800 transition-colors">Downloads</a>
+             <a href="https://ploeger-ukat.de/impressum/" class="hover:text-stone-800 transition-colors">Impressum</a>
+             <a href="https://ploeger-ukat.de/datenschutz/" class="hover:text-stone-800 transition-colors">Datenschutz</a>
+             <a href="https://ploeger-ukat.de/download/" class="hover:text-stone-800 transition-colors">Downloads</a>
          </div>
     </footer>
 
@@ -157,11 +283,162 @@
         // Icons initialisieren
         lucide.createIcons();
 
+        const notarServices = {
+            'immobilienkauf': {
+                eyebrow: 'Immobilien & Grundstücke',
+                title: 'Immobilienkauf',
+                intro: 'Ein Immobiliengeschäft ist meist eine langfristige und wirtschaftlich bedeutende Entscheidung. Wir gestalten und beurkunden die Vereinbarungen so, dass Rechte, Pflichten und der weitere Ablauf für alle Beteiligten klar geregelt sind.',
+                topics: [
+                    'Kauf von Haus, Wohnung oder Grundstück',
+                    'Übertragung von Immobilien innerhalb der Familie',
+                    'Grundschulden und Regelungen zur Finanzierung',
+                    'Besondere Vereinbarungen bei vermieteten oder gewerblichen Objekten'
+                ],
+                preparation: [
+                    'Personendaten aller Beteiligten',
+                    'Angaben zum Objekt oder ein vorhandener Vertragsentwurf',
+                    'Vereinbarter Kaufpreis und geplanter Übergabetermin',
+                    'Besondere Absprachen zwischen Käufer und Verkäufer'
+                ]
+            },
+            'ehe-familie': {
+                eyebrow: 'Partnerschaft & Familie',
+                title: 'Ehe & Familie',
+                intro: 'Notarielle Vereinbarungen schaffen Klarheit für gemeinsame Lebensentscheidungen. Wir erläutern Gestaltungsmöglichkeiten verständlich und halten die gemeinsam gewählte Regelung verbindlich fest.',
+                topics: [
+                    'Ehe- und Partnerschaftsverträge',
+                    'Vereinbarungen zu Vermögen und Versorgung',
+                    'Scheidungsfolgenvereinbarungen',
+                    'Rechtliche Regelungen für Familien und Patchwork-Konstellationen'
+                ],
+                preparation: [
+                    'Personendaten und aktueller Familienstand',
+                    'Überblick über Vermögen, Immobilien und Unternehmen',
+                    'Bestehende Verträge oder frühere Vereinbarungen',
+                    'Persönliche Ziele und Punkte, die Ihnen besonders wichtig sind'
+                ]
+            },
+            'unternehmen': {
+                eyebrow: 'Gesellschaft & Register',
+                title: 'Unternehmen',
+                intro: 'Von der Gründung bis zur Veränderung bestehender Strukturen begleiten wir die notwendigen notariellen Schritte. Dabei behalten wir Gesellschaftsvertrag, Beteiligte und Registeranmeldungen gemeinsam im Blick.',
+                topics: [
+                    'Gründung von GmbH und UG',
+                    'Gesellschaftsverträge und Satzungsänderungen',
+                    'Übertragung von Geschäftsanteilen',
+                    'Umstrukturierungen und Handelsregisteranmeldungen'
+                ],
+                preparation: [
+                    'Angaben zu Gründern, Gesellschaftern und Geschäftsführung',
+                    'Gewünschte Firma, Sitz und Unternehmensgegenstand',
+                    'Geplante Beteiligungs- und Kapitalverhältnisse',
+                    'Vorhandene Verträge oder aktuelle Registerauszüge'
+                ]
+            },
+            'vorsorge': {
+                eyebrow: 'Selbstbestimmt vorsorgen',
+                title: 'Vorsorge & Vollmacht',
+                intro: 'Eine individuell formulierte Vollmacht sorgt dafür, dass eine vertraute Person in Ihrem Sinne handeln kann. Wir besprechen, welche Regelungen zu Ihrer persönlichen, familiären und wirtschaftlichen Situation passen.',
+                topics: [
+                    'General- und Vorsorgevollmachten',
+                    'Patienten- und Betreuungsverfügungen',
+                    'Vollmachten für Immobilien- und Unternehmensangelegenheiten',
+                    'Individuelle Kontroll- und Ersatzregelungen'
+                ],
+                preparation: [
+                    'Personendaten der vorgesehenen Vertrauenspersonen',
+                    'Überblick über Immobilien oder Unternehmensbeteiligungen',
+                    'Bereits vorhandene Vollmachten und Verfügungen',
+                    'Wünsche zu Umfang, Grenzen und Ersatzbevollmächtigten'
+                ]
+            },
+            'testament-schenkung': {
+                eyebrow: 'Nachlass & Vermögensübertragung',
+                title: 'Testament & Schenkung',
+                intro: 'Eine vorausschauende Nachfolgeplanung kann Vermögen erhalten und spätere Konflikte vermeiden. Wir entwickeln mit Ihnen eine klare Regelung für Erbfolge, Absicherung und Übertragungen zu Lebzeiten.',
+                topics: [
+                    'Testamente und Erbverträge',
+                    'Schenkungen und vorweggenommene Erbfolge',
+                    'Absicherung von Ehepartnern und Angehörigen',
+                    'Nachfolge bei Immobilien und Unternehmen'
+                ],
+                preparation: [
+                    'Überblick über Familie und gewünschte Begünstigte',
+                    'Aufstellung wesentlicher Vermögenswerte und Verbindlichkeiten',
+                    'Vorhandene Testamente, Erbverträge oder Schenkungen',
+                    'Persönliche Wünsche zur Verteilung und Absicherung'
+                ]
+            }
+        };
+
+        const notarModal = document.getElementById('notar-modal');
+        let lastNotarTrigger = null;
+
+        function fillNotarList(elementId, items) {
+            const list = document.getElementById(elementId);
+            list.replaceChildren(...items.map(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                return li;
+            }));
+        }
+
+        function openNotarModal(serviceKey, trigger) {
+            const service = notarServices[serviceKey];
+            if (!service) return;
+            lastNotarTrigger = trigger;
+            document.getElementById('notar-modal-eyebrow').textContent = service.eyebrow;
+            document.getElementById('notar-modal-title').textContent = service.title;
+            document.getElementById('notar-modal-intro').textContent = service.intro;
+            fillNotarList('notar-modal-topics', service.topics);
+            fillNotarList('notar-modal-preparation', service.preparation);
+            document.body.classList.add('overflow-hidden');
+            notarModal.showModal();
+            notarModal.querySelector('.notar-dialog-close').focus();
+        }
+
+        function closeNotarModal() {
+            if (notarModal.open) notarModal.close();
+        }
+
+        notarModal.addEventListener('click', event => {
+            if (event.target === notarModal) closeNotarModal();
+        });
+
+        notarModal.addEventListener('close', () => {
+            document.body.classList.remove('overflow-hidden');
+            if (lastNotarTrigger) lastNotarTrigger.focus();
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && notarModal.open) {
+                event.preventDefault();
+                closeNotarModal();
+            }
+        });
+
+        const navbarInner = document.getElementById('navbar-inner');
+        function updateNavbar() {
+            if (window.scrollY > 20) {
+                navbarInner.classList.add('bg-white/90', 'backdrop-blur-xl', 'shadow-lg', 'py-3', 'px-8');
+                navbarInner.classList.remove('bg-transparent', 'py-4', 'px-2');
+            } else {
+                navbarInner.classList.add('bg-transparent', 'py-4', 'px-2');
+                navbarInner.classList.remove('bg-white/90', 'backdrop-blur-xl', 'shadow-lg', 'py-3', 'px-8');
+            }
+        }
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+        updateNavbar();
+
         // Mobile Menü steuern
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('menu-button');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
+            const isOpen = !menu.classList.contains('hidden');
+            button.setAttribute('aria-expanded', String(isOpen));
+            button.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
         }
     </script>
 </body>

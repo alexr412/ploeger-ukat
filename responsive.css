@@ -1,0 +1,98 @@
+:root {
+    --site-header-offset: clamp(6.75rem, 14vh, 8rem);
+    --site-section-x: clamp(1rem, 3vw, 2rem);
+    --site-section-y: clamp(2.5rem, 6vh, 5rem);
+}
+
+html { scroll-padding-top: var(--site-header-offset); }
+img { max-width: 100%; }
+
+.site-viewport-hero {
+    min-height: 100svh;
+    padding-top: clamp(7.5rem, 15vh, 10rem);
+    padding-bottom: clamp(4.5rem, 9vh, 7rem);
+}
+
+.site-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.72fr);
+    align-items: center;
+    gap: clamp(3rem, 7vw, 7rem);
+}
+
+.site-hero-content { max-width: 45rem; }
+.site-hero-title {
+    font-size: clamp(3rem, 4.3vw, 4.9rem);
+    line-height: 1.02;
+    text-wrap: balance;
+}
+.site-hero-copy {
+    max-width: 42rem;
+    font-size: clamp(1rem, 1.35vw, 1.35rem);
+    line-height: 1.55;
+}
+
+.site-hero-aside {
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    background: rgba(0, 64, 82, 0.92);
+    color: white;
+    box-shadow: 0 1.5rem 4rem rgba(0, 47, 61, 0.2);
+    backdrop-filter: blur(14px);
+}
+
+.site-hero-step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+.site-hero-step:first-of-type { margin-top: 1.5rem; }
+
+.site-content-section {
+    padding: var(--site-section-y) var(--site-section-x);
+}
+
+.site-section-heading {
+    margin-bottom: clamp(2.5rem, 6vh, 5rem);
+}
+
+.site-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.site-responsive-card {
+    min-height: clamp(15rem, 29vh, 19rem);
+    padding: clamp(1.5rem, 3.5vh, 2.25rem);
+    border-radius: clamp(1.5rem, 3.5vh, 2.25rem);
+}
+
+.site-responsive-card .site-card-icon {
+    width: clamp(3rem, 6vh, 3.5rem);
+    height: clamp(3rem, 6vh, 3.5rem);
+    margin-bottom: clamp(1.25rem, 2.5vh, 1.75rem);
+}
+
+@media (max-width: 1023px) {
+    .site-hero-grid { display: block; }
+    .site-hero-aside { display: none; }
+    .site-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 639px) {
+    :root { --site-header-offset: 6.5rem; }
+    .site-viewport-hero {
+        padding-top: 7.5rem;
+        padding-bottom: 4rem;
+    }
+    .site-hero-title { font-size: clamp(2.75rem, 13vw, 3.5rem); }
+    .site-card-grid { grid-template-columns: 1fr; }
+    .site-responsive-card { min-height: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+}
